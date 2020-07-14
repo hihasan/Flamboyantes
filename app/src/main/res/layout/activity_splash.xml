@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/app_white_logo"
+        android:layout_width="256sp"
+        android:layout_height="256sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16sp"
+        android:src="@drawable/app_white_logo"/>
+
+</RelativeLayout>
