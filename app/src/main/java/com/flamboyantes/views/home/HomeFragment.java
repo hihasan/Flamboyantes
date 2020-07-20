@@ -55,8 +55,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private RecyclerView recycler_two, recycler_three, recycler_four, recycler_five, recycler_six;
     private LinearLayoutManager linearLayoutManager;
-    private AdapterOne adapterOne;
-    private AdapterTwo adapterTwo;
 
     private ProductsApi products;
     private GridAdapter gridAdapter;
