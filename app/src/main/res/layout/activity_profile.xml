@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/black" />
+
+        <!--Top Header Layout-->
+        <RelativeLayout
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/navicon_iv"
+                android:layout_width="42sp"
+                android:layout_height="42sp"
+                android:layout_centerVertical="true"
+                android:onClick="goBack"
+                android:padding="8sp"
+                android:src="@drawable/return_nav"
+                android:tint="@color/colorPrimaryDark" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/navigation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/profile"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="32sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="12sp"
+                android:layout_marginTop="4sp"
+                android:layout_centerVertical="true"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/profile_header_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:layout_marginTop="15sp"
+            android:layout_below="@+id/topbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/layer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="35dp"
+                    android:paddingRight="20dp">
+
+                    <!--Top Profile Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circularbordersolid"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/profile_image"
+                                android:layout_width="56sp"
+                                android:layout_height="56sp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/pro_pic"
+                                android:layout_marginTop="8sp"
+                                android:backgroundTint="@color/white"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Arjit Singh"
+                                android:gravity="center"
+                                android:layout_centerHorizontal="true"
+                                android:textColor="@color/white"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="arijitsingh@gmail.com"
+                                android:layout_below="@id/name"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:layout_centerHorizontal="true"
+                                android:textColor="@color/white"/>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:paddingBottom="10dp">
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/info_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layer1"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    app:cardElevation="15sp"
+                    app:cardCornerRadius="20sp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginRight="20sp"
+                        android:padding="8sp"
+                        android:background="@drawable/circularbordersolid">
+                        <RelativeLayout
+                            android:id="@+id/relative_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4sp">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/name_iv"
+                                android:layout_width="24sp"
+                                android:layout_height="24sp"
+                                android:src="@drawable/ic_person_black_24dp"
+                                app:tint="@color/white"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/name_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/name_iv"
+                                android:text="Arijit Singh"
+                                android:textSize="16sp"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="4sp"
+                                android:layout_marginRight="4sp"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/relative_two"
+                            android:layout_below="@id/relative_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4sp">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/email_iv"
+                                android:layout_width="24sp"
+                                android:layout_height="24sp"
+                                android:src="@drawable/ic_email_black_24dp"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/email_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/email_iv"
+                                android:text="arijitsingh@gmail.com"
+                                android:textSize="16sp"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="4sp"
+                                android:layout_marginRight="4sp"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/relative_three"
+                            android:layout_below="@id/relative_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4sp">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/phone_iv"
+                                android:layout_width="24sp"
+                                android:layout_height="24sp"
+                                android:src="@drawable/ic_phone_black_24dp"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/phone_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/phone_iv"
+                                android:text="+918017716273"
+                                android:textSize="16sp"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="4sp"
+                                android:layout_marginRight="4sp"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</ScrollView>

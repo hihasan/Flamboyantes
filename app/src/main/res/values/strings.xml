@@ -24,4 +24,14 @@
     <string name="signup">Sign Up</string>
     <string name="artist">Artist</string>
     <string name="user">User</string>
+    <string name="your_personal_detail">Your Personal Details</string>
+    <string name="your_contact_info">Your Contact Information</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="subscripe">Subscribe</string>
+    <string name="change_password">Forgot Password</string>
+    <string name="profile">Profile</string>
+    <string name="top_selling_products">Top Selling Products</string>
+    <string name="top_selling_products_this_products">Top This week</string>
+    <string name="upcoming_album">Upcoming Albums</string>
+    <string name="concert_ticket">Concert Ticket</string>
 </resources>

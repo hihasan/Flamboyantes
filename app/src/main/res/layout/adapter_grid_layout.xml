@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="112sp"
-    android:layout_height="wrap_content">
+    android:layout_width="116sp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="4sp"
+    android:layout_marginRight="4sp"
+    android:paddingRight="4sp"
+    android:paddingLeft="4sp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/album_img"

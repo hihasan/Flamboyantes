@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.flamboyantes.R;
-import com.flamboyantes.model.ModelOne;
+import com.flamboyantes.model.products.AllNewPeoductsDataModel;
 
-public class AdapterOne extends RecyclerView.Adapter<AdapterOne.ViewHolder> {
-    public ModelOne[] modelOne;
+import java.util.ArrayList;
+
+public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
+    public ArrayList <AllNewPeoductsDataModel> allNewProductArray;
     public Context context;
 
-    public AdapterOne(ModelOne[] modelOne, Context context){
-        this.modelOne = modelOne;
+    public GridAdapter(ArrayList<AllNewPeoductsDataModel> allNewProductArray, Context context){
+        this.allNewProductArray = allNewProductArray;
         this.context = context;
     }
 
@@ -27,24 +29,31 @@ public class AdapterOne extends RecyclerView.Adapter<AdapterOne.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View menuAdapter=inflater.inflate(R.layout.adapter_grid_layout,parent,false);
-        AdapterOne.ViewHolder viewHolder=new AdapterOne.ViewHolder(menuAdapter);
+        View gridAdapter=inflater.inflate(R.layout.adapter_grid_layout,parent,false);
+        GridAdapter.ViewHolder viewHolder=new GridAdapter.ViewHolder(gridAdapter);
         context = parent.getContext();
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.album_name.setText(modelOne[position].getName());
-        holder.album_price.setText("$ "+modelOne[position].getAmmount());
-        Glide.with(context)
-                .load(modelOne[position].getImg())
-                .into(holder.album_img);
+        holder.album_name.setText(allNewProductArray.get(position).getName());
+        holder.album_price.setText("$5");
+
+        for (int i =0 ; i<allNewProductArray.get(position).getImages().size(); i++){
+
+            Glide.with(context)
+                    .load(allNewProductArray.get(position).getImages().get(i).getSrc())
+                    .into(holder.album_img);
+        }
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        return modelOne.length;
+        return allNewProductArray.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -6,5 +6,6 @@
 
     <color name="black"> #232121 </color>
     <color name="white"> #FFFFFF </color>
+    <color name="ash_background">#dddddd</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FFFFFF</color>
 </resources>

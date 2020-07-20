@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
 
     <RelativeLayout
@@ -15,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/black"
             app:popupTheme="@style/AppTheme.AppBarOverlay">
 
             <RelativeLayout
@@ -38,28 +39,261 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/signup"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="32sp" />
 
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabBackground="@drawable/tab_color_selector"
-            android:elevation="15sp"
-            app:tabTextColor="@color/colorPrimaryDark"
-            app:tabSelectedTextColor="@color/white"
-            android:layout_below="@id/toolbar"/>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_below="@id/tabLayout"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-            tools:layout_editor_absoluteX="8dp" />
+            android:layout_below="@id/toolbar">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/header_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:text="@string/your_personal_detail"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fnameTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_one"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="First Name"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fname_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/lnameTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fnameTextField"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="Last Name"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lname_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lnameTextField"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="Email"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmemailTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailTextField"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="Confirm Email"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirmemail_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:id="@+id/first_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_below="@id/confirmemailTextField"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginBottom="12sp"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/header_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/first_divider"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="8sp"
+                    android:text="@string/your_contact_info"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phoneTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_two"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="Phone Number"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:id="@+id/second_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_below="@id/phoneTextField"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginBottom="12sp"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/header_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/second_divider"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="8sp"
+                    android:text="@string/newsletter"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <RelativeLayout
+                    android:id="@+id/newslater_layer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_below="@id/header_three">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subscripe"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:backgroundTint="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/third_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_below="@id/newslater_layer"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginBottom="12sp"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/header_forth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/third_divider"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="8sp"
+                    android:text="@string/newsletter"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_forth"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="2sp"
+                    android:hint="Password"
+                    app:passwordToggleEnabled="true"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmpasswordTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/passwordTextField"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginRight="8sp"
+                    android:layout_marginBottom="8sp"
+                    android:hint="Confirm Password"
+                    app:passwordToggleEnabled="true"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirmpassword_tf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_below="@id/confirmpasswordTextField"
+                    android:layout_margin="8sp"
+                    android:background="@drawable/btn_ripple"
+                    android:text="Register"
+                    android:textColor="@color/white"
+                    android:elevation="15sp" />
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
 
 

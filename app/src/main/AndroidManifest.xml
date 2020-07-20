@@ -29,6 +29,10 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".views.auth.SignupActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".views.auth.ForgetPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".views.auth.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data
             android:name="preloaded_fonts"

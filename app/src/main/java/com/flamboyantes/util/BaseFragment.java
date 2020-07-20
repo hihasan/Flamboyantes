@@ -42,6 +42,15 @@ public class BaseFragment extends Fragment {
 
     //method for fragment replace getChildFragmentManager()
 
+    protected void initFragment(Fragment fragment, String id, int resId) {
+        getChildFragmentManager()
+                .beginTransaction()
+                .add(resId, fragment, id)
+                .addToBackStack(null)
+                .commit();
+    }
+
+
     public void replaceFragment(Fragment fragment, String newid, String oldId, int resId) {
         Singleton.getInstance().setWhichFragmentItIs(fragment);
         getFragmentManager()

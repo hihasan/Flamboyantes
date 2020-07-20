@@ -1,13 +1,16 @@
 package com.flamboyantes.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.flamboyantes.R;
 import com.flamboyantes.util.BaseActivity;
 import com.flamboyantes.util.BottomNavigationBehavior;
+import com.flamboyantes.views.auth.ProfileActivity;
 import com.flamboyantes.views.cart.CartFragment;
 import com.flamboyantes.views.favorite.FavoriteFragment;
 import com.flamboyantes.views.home.HomeFragment;
+import com.flamboyantes.views.home.HomeMain;
 import com.flamboyantes.views.search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,11 +31,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends BaseActivity {
 
     NavigationView navigationView;
     BottomNavigationView navigation;
-    AppCompatImageView header_profile;
+    CircleImageView header_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,7 @@ public class MainActivity extends BaseActivity {
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
 
-        loadFragment(new HomeFragment());
+        loadFragment(new HomeMain());
     }
 
 //    public void onBackPressed() {
@@ -63,17 +68,17 @@ public class MainActivity extends BaseActivity {
 //        }
 //    }
     public void initViews(){
-//        header_profile = findViewById (R.id.header_profile);
+        header_profile = findViewById (R.id.header_profile);
     }
 
     public void initListeners(){
-//        header_profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent profile =new Intent (MainActivity.this, ProfileActivity.class);
-//                startActivity(profile);
-//            }
-//        });
+        header_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profile =new Intent (MainActivity.this, ProfileActivity.class);
+                startActivity(profile);
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -83,7 +88,7 @@ public class MainActivity extends BaseActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    fragment = new HomeFragment();
+                    fragment = new HomeMain();
                     loadFragment(fragment);
                     return true;
 

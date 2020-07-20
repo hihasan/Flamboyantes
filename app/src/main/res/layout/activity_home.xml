@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
     android:background="@color/black">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,9 +57,10 @@
                     android:text="@string/new_album"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"
+                    android:layout_marginRight="2sp"/>
                 <RelativeLayout
-                    android:id="@+id/login_btn"
+                    android:id="@+id/new_album_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -75,6 +77,26 @@
                         android:textColor="@color/white"/>
                 </RelativeLayout>
             </RelativeLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/two"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                shimmer:duration="800">
+
+                <!-- Adding 7 rows of placeholders -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/data_grid_placeholder_layout" />
+
+                </RelativeLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_two"
                 android:layout_width="wrap_content"
@@ -96,12 +118,13 @@
                     android:id="@+id/title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/new_album"
+                    android:text="@string/top_selling_products"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"
+                    android:layout_marginRight="2sp"/>
                 <RelativeLayout
-                    android:id="@+id/three_relative"
+                    android:id="@+id/top_selling_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -118,6 +141,26 @@
                         android:textColor="@color/white"/>
                 </RelativeLayout>
             </RelativeLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/three"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                shimmer:duration="800">
+
+                <!-- Adding 7 rows of placeholders -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/data_grid_placeholder_layout" />
+
+                </RelativeLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_three"
                 android:layout_width="wrap_content"
@@ -139,12 +182,13 @@
                     android:id="@+id/title3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/new_album"
+                    android:text="@string/top_selling_products_this_products"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"
+                    android:layout_marginRight="2sp" />
                 <RelativeLayout
-                    android:id="@+id/four_relative"
+                    android:id="@+id/top_sellling_this_week_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -161,6 +205,26 @@
                         android:textColor="@color/white"/>
                 </RelativeLayout>
             </RelativeLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/four"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                shimmer:duration="800">
+
+                <!-- Adding 7 rows of placeholders -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/data_grid_placeholder_layout" />
+
+                </RelativeLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_four"
                 android:layout_width="wrap_content"
@@ -169,10 +233,137 @@
                 android:layout_marginTop="8sp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/relative_part_five"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_part_four"
+            android:layout_margin="8sp">
+            <RelativeLayout
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upcoming_album"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginRight="2sp"/>
+                <RelativeLayout
+                    android:id="@+id/upcoming_album_view_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/seeall_solid_background"
+                    android:paddingLeft="32sp"
+                    android:paddingRight="32sp"
+                    android:paddingTop="12sp"
+                    android:paddingBottom="12sp">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/see_all"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/white"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/five"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                shimmer:duration="800">
+
+                <!-- Adding 7 rows of placeholders -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/data_grid_placeholder_layout" />
+
+                </RelativeLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/five"
+                android:layout_marginTop="8sp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relative_part_six"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_part_five"
+            android:layout_margin="8sp">
+            <RelativeLayout
+                android:id="@+id/six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/concert_ticket"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginRight="2sp"/>
+                <RelativeLayout
+                    android:id="@+id/concert_ticket_view_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/seeall_solid_background"
+                    android:paddingLeft="32sp"
+                    android:paddingRight="32sp"
+                    android:paddingTop="12sp"
+                    android:paddingBottom="12sp">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/see_all"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/white"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/six"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                shimmer:duration="800">
+
+                <!-- Adding 7 rows of placeholders -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/data_grid_placeholder_layout" />
+
+                </RelativeLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/six"
+                android:layout_marginTop="8sp"/>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="80sp"
-            android:layout_below="@id/relative_part_four"/>
-
+            android:layout_below="@id/relative_part_six"/>
 
     </RelativeLayout>
 </ScrollView>

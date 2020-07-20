@@ -28,6 +28,7 @@
                     android:layout_centerInParent="true"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/header_profile"
                     android:layout_width="32sp"
                     android:layout_height="32sp"
                     android:layout_centerVertical="true"
