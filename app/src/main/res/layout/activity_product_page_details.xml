@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/layer1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_156sdp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back"
+                android:layout_width="38sp"
+                android:layout_height="38sp"
+                android:onClick="goBack"
+                android:elevation="15sp"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="12sp"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/album_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/colorPrimaryDark"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/favorite_iv"
+                android:layout_width="38sp"
+                android:layout_height="38sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="12sp"
+                android:layout_marginEnd="12sp"
+                android:layout_marginBottom="12sp"
+                android:padding="4sp"
+                android:src="@drawable/ic_favorite_border_black_24dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4sp"
+            android:layout_below="@id/layer1"
+            android:background="@color/colorPrimaryDark">
+            <RelativeLayout
+                android:id="@+id/left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="12sp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/album_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2sp"
+                    android:text="Album Name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/distributor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/album_name_tv"
+                    android:layout_marginTop="4sp"
+                    android:text="Distributor: Flamboyantes"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/update_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2sp"
+                    android:layout_below="@id/distributor"
+                    android:text="Update: 2020-22-07"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="12sp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="$ 5"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_to_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6sp"
+                    android:paddingRight="4sp"
+                    android:paddingLeft="4sp"
+                    android:layout_below="@id/price_tv"
+                    android:text="@string/add_to_cart"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="@drawable/add_cart_white_ripple"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12sp"
+            android:orientation="vertical"
+            android:layout_below="@id/layer2"
+            shimmer:duration="800">
+
+            <!-- Adding 7 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/music_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layer2"
+            android:layout_marginTop="8sp"/>
+    </RelativeLayout>
+
+</ScrollView>

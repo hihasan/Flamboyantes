@@ -1,10 +1,12 @@
 package com.flamboyantes.api;
 
+import com.flamboyantes.model.products.AllMusicModel;
 import com.flamboyantes.model.products.AllNewProductArray;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Path;
 
 public interface ProductsApi {
     @GET("newproducts")
@@ -40,5 +42,11 @@ public interface ProductsApi {
     @GET("concerttickets")
     Call<AllNewProductArray> getconcerttickets(
             @Header("Authorization") String contentRange
+    );
+
+    @GET("productdownloadsample/{id}")
+    Call<AllMusicModel> getAllMusicModel(
+            @Header("Authorization") String contentRange,
+            @Path("id") int id
     );
 }

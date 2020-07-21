@@ -59,23 +59,19 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:layout_marginRight="2sp"/>
-                <RelativeLayout
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/new_album_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/seeall_solid_background"
-                    android:paddingLeft="32sp"
-                    android:paddingRight="32sp"
-                    android:paddingTop="12sp"
-                    android:paddingBottom="12sp">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/see_all"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
-                </RelativeLayout>
+                    android:text="@string/view_all"
+                    android:textColor="@color/white"
+                    android:paddingRight="12sp"
+                    android:paddingLeft="12sp"
+                    android:paddingTop="4sp"
+                    android:paddingBottom="4sp"/>
             </RelativeLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container"
@@ -123,23 +119,19 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:layout_marginRight="2sp"/>
-                <RelativeLayout
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/top_selling_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/seeall_solid_background"
-                    android:paddingLeft="32sp"
-                    android:paddingRight="32sp"
-                    android:paddingTop="12sp"
-                    android:paddingBottom="12sp">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/see_all"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
-                </RelativeLayout>
+                    android:text="@string/view_all"
+                    android:textColor="@color/white"
+                    android:paddingRight="12sp"
+                    android:paddingLeft="12sp"
+                    android:paddingTop="4sp"
+                    android:paddingBottom="4sp"/>
             </RelativeLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container_two"
@@ -187,23 +179,18 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:layout_marginRight="2sp" />
-                <RelativeLayout
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/top_sellling_this_week_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/seeall_solid_background"
-                    android:paddingLeft="32sp"
-                    android:paddingRight="32sp"
-                    android:paddingTop="12sp"
-                    android:paddingBottom="12sp">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/see_all"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
-                </RelativeLayout>
+                    android:text="@string/view_all"
+                    android:textColor="@color/white"
+                    android:paddingRight="12sp"
+                    android:paddingLeft="12sp"
+                    android:paddingTop="4sp"
+                    android:paddingBottom="4sp"/>
             </RelativeLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container_three"
@@ -251,23 +238,19 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:layout_marginRight="2sp"/>
-                <RelativeLayout
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/upcoming_album_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/seeall_solid_background"
-                    android:paddingLeft="32sp"
-                    android:paddingRight="32sp"
-                    android:paddingTop="12sp"
-                    android:paddingBottom="12sp">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/see_all"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
-                </RelativeLayout>
+                    android:text="@string/view_all"
+                    android:textColor="@color/white"
+                    android:paddingRight="12sp"
+                    android:paddingLeft="12sp"
+                    android:paddingTop="4sp"
+                    android:paddingBottom="4sp"/>
             </RelativeLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container_four"
@@ -315,23 +298,19 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:layout_marginRight="2sp"/>
-                <RelativeLayout
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/concert_ticket_view_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/seeall_solid_background"
-                    android:paddingLeft="32sp"
-                    android:paddingRight="32sp"
-                    android:paddingTop="12sp"
-                    android:paddingBottom="12sp">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/see_all"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
-                </RelativeLayout>
+                    android:text="@string/view_all"
+                    android:textColor="@color/white"
+                    android:paddingRight="12sp"
+                    android:paddingLeft="12sp"
+                    android:paddingTop="4sp"
+                    android:paddingBottom="4sp"/>
             </RelativeLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container_five"

@@ -20,6 +20,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flamboyantes.R;
 import com.flamboyantes.adapter.ListRecyclerAdapter;
 import com.flamboyantes.api.ProductsApi;
+import com.flamboyantes.listener.ProductsListener;
 import com.flamboyantes.model.products.AllNewPeoductsDataModel;
 import com.flamboyantes.model.products.AllNewProductArray;
 import com.flamboyantes.util.APIClient;
@@ -34,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpcomingAlbumFragment extends BaseFragment implements View.OnClickListener{
+public class UpcomingAlbumFragment extends BaseFragment implements View.OnClickListener, ProductsListener {
 
     private View view;
     private ShimmerFrameLayout mShimmerViewContainer;
@@ -45,10 +46,13 @@ public class UpcomingAlbumFragment extends BaseFragment implements View.OnClickL
     private ListRecyclerAdapter listRecyclerAdapter;
     private ProductsApi products;
 
+    private UpcomingAlbumFragment listener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_list, container, false);
+        listener = this;
         Singleton.getInstance().setContext(getActivity());
 
         initViews();
@@ -125,7 +129,7 @@ public class UpcomingAlbumFragment extends BaseFragment implements View.OnClickL
     }
 
     private void newProducts(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        listRecyclerAdapter = new ListRecyclerAdapter(allNewPeoductsDataModel, getContext());
+        listRecyclerAdapter = new ListRecyclerAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         list_recycler.setAdapter(listRecyclerAdapter);
         list_recycler.setLayoutManager(linearLayoutManager);
@@ -143,5 +147,10 @@ public class UpcomingAlbumFragment extends BaseFragment implements View.OnClickL
                 replaceFragment(new HomeFragment(), Constants.HomeScreen, Constants.HomeFragment, R.id.fragment_container);
                 break;
         }
+    }
+
+    @Override
+    public void onPositionNumber(int id, int position) {
+        replaceFragment(new ProductPageDetails(), Constants.HomeScreen, Constants.HomeFragment, R.id.fragment_container);
     }
 }

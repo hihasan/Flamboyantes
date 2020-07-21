@@ -7,23 +7,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flamboyantes.R;
-import com.flamboyantes.adapter.AdapterOne;
-import com.flamboyantes.adapter.AdapterTwo;
 import com.flamboyantes.adapter.GridAdapter;
 import com.flamboyantes.adapter.SlidingImageAdapter;
 import com.flamboyantes.api.ProductsApi;
+import com.flamboyantes.listener.ProductsListener;
 import com.flamboyantes.model.products.AllNewPeoductsDataModel;
 import com.flamboyantes.model.products.AllNewProductArray;
 import com.flamboyantes.util.APIClient;
@@ -42,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener, ProductsListener {
     private View view;
     private HomeFragment context=this;
     public CirclePageIndicator indicator;
@@ -61,11 +60,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private ShimmerFrameLayout mShimmerViewContainer, shimmer_view_container_two, shimmer_view_container_three, shimmer_view_container_four, shimmer_view_container_five;
 
     //Btn relative
-    RelativeLayout new_album_view_btn, top_selling_view_btn, top_sellling_this_week_view_btn, upcoming_album_view_btn, concert_ticket_view_btn;
+    AppCompatButton new_album_view_btn, top_selling_view_btn, top_sellling_this_week_view_btn, upcoming_album_view_btn, concert_ticket_view_btn;
+
+    private HomeFragment listener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home, container, false);
+        listener = this;
         Singleton.getInstance().setContext(getActivity());
         initViews();
         initListeners();
@@ -387,7 +390,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void concerttickets(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        gridAdapter = new GridAdapter(allNewPeoductsDataModel, getContext());
+        gridAdapter = new GridAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recycler_six.setAdapter(gridAdapter);
         recycler_six.setLayoutManager(linearLayoutManager);
@@ -399,7 +402,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void upcomingalbums4(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        gridAdapter = new GridAdapter(allNewPeoductsDataModel, getContext());
+        gridAdapter = new GridAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recycler_five.setAdapter(gridAdapter);
         recycler_five.setLayoutManager(linearLayoutManager);
@@ -411,7 +414,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void topsellingproductthisweek(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        gridAdapter = new GridAdapter(allNewPeoductsDataModel, getContext());
+        gridAdapter = new GridAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recycler_four.setAdapter(gridAdapter);
         recycler_four.setLayoutManager(linearLayoutManager);
@@ -423,7 +426,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void topsellingproduct(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        gridAdapter = new GridAdapter(allNewPeoductsDataModel, getContext());
+        gridAdapter = new GridAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recycler_three.setAdapter(gridAdapter);
         recycler_three.setLayoutManager(linearLayoutManager);
@@ -435,7 +438,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void newFourProducts(ArrayList<AllNewPeoductsDataModel> allNewPeoductsDataModel) {
-        gridAdapter = new GridAdapter(allNewPeoductsDataModel, getContext());
+        gridAdapter = new GridAdapter(allNewPeoductsDataModel, listener, getContext());
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recycler_two.setAdapter(gridAdapter);
         recycler_two.setLayoutManager(linearLayoutManager);
@@ -469,5 +472,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 replaceFragment(new ConcertFragment(), Constants.HomeScreen, Constants.HomeFragment, R.id.fragment_container);
                 break;
         }
+    }
+
+    @Override
+    public void onPositionNumber(int id, int position) {
+        replaceFragment(new ProductPageDetails(), Constants.HomeScreen, Constants.HomeFragment, R.id.fragment_container);
     }
 }
