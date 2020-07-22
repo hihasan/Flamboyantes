@@ -16,6 +16,7 @@
             android:id="@+id/album_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_play_circle_filled_black_24dp"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/album_name"

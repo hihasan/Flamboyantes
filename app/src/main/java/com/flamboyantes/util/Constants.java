@@ -6,4 +6,5 @@ public class Constants {
     public static final String HomeScreen = "homescreen";
     public static final String HomeFragment = "homefragment";
     public static boolean love=false;
+    public static boolean player=false;
 }

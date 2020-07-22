@@ -128,11 +128,11 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
 
             case R.id.favorite_iv:
                 if (Constants.love ==true){
-                    favorite_iv.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
+                    favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
                     Toast.makeText(getActivity(), "Removed from Favorite", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    favorite_iv.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+                    favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
                     Toast.makeText(getActivity(), "Added from Favorite", Toast.LENGTH_SHORT).show();
                 }
                 Constants.love = !Constants.love;
