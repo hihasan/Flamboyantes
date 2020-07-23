@@ -137,6 +137,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/layer2"
             android:layout_marginTop="8sp"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/no_data_found"
+            android:layout_width="256sp"
+            android:layout_height="256sp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/no_data_found"
+            android:visibility="invisible" />
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/no_return"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/no_data_found"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:text="Nothing Music File Found"-->
+<!--            android:visibility="invisible" />-->
     </RelativeLayout>
 
 </ScrollView>

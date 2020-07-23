@@ -32,6 +32,7 @@ import com.flamboyantes.util.BaseFragment;
 import com.flamboyantes.util.Constants;
 import com.flamboyantes.util.RetrofitService;
 import com.flamboyantes.util.Singleton;
+import com.flamboyantes.util.SqliteDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +134,8 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
                 }
                 else {
                     favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
-                    Toast.makeText(getActivity(), "Added from Favorite", Toast.LENGTH_SHORT).show();
+                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
+                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
                 }
                 Constants.love = !Constants.love;
                 break;
@@ -180,11 +182,16 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
     }
 
     private void songList(ArrayList<Downloaditem> downloaditems) {
-        musicAdapter = new MusicAdapter(downloaditems, getContext());
-        linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        music_recycler.setAdapter(musicAdapter);
-        music_recycler.setLayoutManager(linearLayoutManager);
-        music_recycler.setNestedScrollingEnabled(false);
+        if (downloaditems == null){
+
+        }else {
+            musicAdapter = new MusicAdapter(downloaditems, getContext());
+            linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+            music_recycler.setAdapter(musicAdapter);
+            music_recycler.setLayoutManager(linearLayoutManager);
+            music_recycler.setNestedScrollingEnabled(false);
+        }
+
 
         // Stopping Shimmer Effect's animation after data is loaded to ListView
         mShimmerViewContainer.stopShimmerAnimation();

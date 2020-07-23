@@ -9,6 +9,11 @@ import retrofit2.http.Header;
 import retrofit2.http.Path;
 
 public interface ProductsApi {
+    @GET("products")
+    Call<AllNewProductArray> getProducts(
+            @Header("Authorization") String contentRange
+    );
+
     @GET("newproducts")
     Call<AllNewProductArray> getAllNewProductArray(
             @Header("Authorization") String contentRange

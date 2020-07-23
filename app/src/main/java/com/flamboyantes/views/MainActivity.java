@@ -9,9 +9,11 @@ import com.flamboyantes.util.BottomNavigationBehavior;
 import com.flamboyantes.views.auth.ProfileActivity;
 import com.flamboyantes.views.cart.CartFragment;
 import com.flamboyantes.views.favorite.FavoriteFragment;
+import com.flamboyantes.views.favorite.FavoriteMain;
 import com.flamboyantes.views.home.HomeFragment;
 import com.flamboyantes.views.home.HomeMain;
 import com.flamboyantes.views.search.SearchFragment;
+import com.flamboyantes.views.search.SearchMain;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -93,12 +95,12 @@ public class MainActivity extends BaseActivity {
                     return true;
 
                 case R.id.navigation_search:
-                    fragment = new SearchFragment();
+                    fragment = new SearchMain();
                     loadFragment(fragment);
                     return true;
 
                 case R.id.navigation_favorite:
-                    fragment = new FavoriteFragment();
+                    fragment = new FavoriteMain();
                     loadFragment(fragment);
                     return true;
 
@@ -122,7 +124,7 @@ public class MainActivity extends BaseActivity {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(0);
         transaction.commit();
     }
 

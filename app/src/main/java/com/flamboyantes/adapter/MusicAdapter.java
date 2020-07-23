@@ -71,7 +71,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return downloaditem.size();
+        if (downloaditem != null){
+            return downloaditem.size();
+
+        }else {
+            return 0;
+        }
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
