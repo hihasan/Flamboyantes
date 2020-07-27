@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     public static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    private static final Integer[] IMAGES= {android.R.color.background_dark,android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_red_dark};
+    private static final Integer[] IMAGES= {R.drawable.banner_1, R.drawable.banner_3, R.drawable.banner_4, R.drawable.banner_5};
 
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 

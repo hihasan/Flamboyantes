@@ -130,12 +130,14 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
             case R.id.favorite_iv:
                 if (Constants.love ==true){
                     favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
-                    Toast.makeText(getActivity(), "Removed from Favorite", Toast.LENGTH_SHORT).show();
+                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
+                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
+                    Toast.makeText(getActivity(), "Added To Favorite", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
-                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
-                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
+//                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
+//                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
                 }
                 Constants.love = !Constants.love;
                 break;
