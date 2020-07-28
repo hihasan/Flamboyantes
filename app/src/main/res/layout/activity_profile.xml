@@ -90,14 +90,15 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/profile_image"
                                 android:layout_width="56sp"
                                 android:layout_height="56sp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/pro_pic"
                                 android:layout_marginTop="8sp"
-                                android:backgroundTint="@color/white"/>
+                                android:backgroundTint="@color/white"
+                                android:src="@drawable/app_logo" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -160,9 +161,31 @@
                         android:padding="8sp"
                         android:background="@drawable/circularbordersolid">
                         <RelativeLayout
+                            android:id="@+id/one"
+                            android:layout_width="match_parent"
+                            android:layout_margin="4sp"
+                            android:layout_height="?attr/actionBarSize">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Profile Details"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold"/>
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/edit_profile_btn"
+                                android:layout_width="24sp"
+                                android:layout_height="24sp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_create_black_24dp"/>
+                        </RelativeLayout>
+                        <RelativeLayout
                             android:id="@+id/relative_one"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/one"
                             android:layout_margin="4sp">
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/name_iv"

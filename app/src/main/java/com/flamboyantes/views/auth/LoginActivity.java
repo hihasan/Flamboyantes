@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.flamboyantes.R;
 import com.flamboyantes.api.AuthApi;
 import com.flamboyantes.model.auth.Login;
+import com.flamboyantes.model.auth.LoginData;
 import com.flamboyantes.model.auth.LoginModel;
 import com.flamboyantes.model.auth.LoginTest;
 import com.flamboyantes.model.auth.UserLogin;
@@ -93,23 +94,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             final String userEmail = email_tf.getText().toString();
             String passwordValue = password_tf.getText().toString();
 
-//            UserLogin userLogin = new UserLogin(userEmail, passwordValue);
+            UserLogin userLogin = new UserLogin(userEmail, passwordValue);
 
-            UserLogin userLogin = new UserLogin("admin@yourstore.com", "adminadmin");
+//            UserLogin userLogin = new UserLogin("admin@yourstore.com", "adminadmin");
             LoginTest log = new LoginTest(userLogin);
-            Call<LoginTest> callLogin = authApi.userLogin(log);
-            callLogin.enqueue(new Callback<LoginTest>() {
+            Call<LoginData> callLogin = authApi.userLogin(log);
+            callLogin.enqueue(new Callback<LoginData>() {
                 @Override
-                public void onResponse(Call<LoginTest> call, Response<LoginTest> response) {
+                public void onResponse(Call<LoginData> call, Response<LoginData> response) {
                     dialogUtil.dismissProgress();
                     if (response.isSuccessful()) {
 
-
                         if (response.code() == 200) {
 
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                           // Toast.makeText(getApplicationContext(), String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                            startActivity(i);
+                            if (response.body().getStatus() == false){
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                startActivity(i);
+                            }
+
                         }
 
                     }
@@ -122,7 +127,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
 
                 @Override
-                public void onFailure(Call<LoginTest> call, Throwable t) {
+                public void onFailure(Call<LoginData> call, Throwable t) {
                     dialogUtil.dismissProgress();
                     Toast.makeText(LoginActivity.this, getResources().getString(R.string.tryagain), Toast.LENGTH_LONG).show();
                 }

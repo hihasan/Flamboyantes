@@ -27,6 +27,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
@@ -124,8 +125,33 @@ public class MainActivity extends BaseActivity {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-//        transaction.addToBackStack(0);
+        transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.getBackStackEntryCount() > 1) {
+            fm.popBackStack();
+        } else if (fm.getBackStackEntryCount() == 1) {
+            dialogUtil.showDialogYesNo(getResources().getString(R.string.closeapp_msg), (dialog, id) -> {
+
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        //finishAffinity();
+
+
+                    }, (dialog, id) -> dialog.dismiss()
+
+            );
+        } else {
+            super.onBackPressed();
+
+        }
     }
 
 

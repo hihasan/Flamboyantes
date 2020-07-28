@@ -40,4 +40,5 @@
     <string name="update_on">Update</string>
     <string name="tryagain">Try Again</string>
     <string name="no_internet">No Internet Connection</string>
+    <string name="closeapp_msg">Do You Want To Close This App?</string>
 </resources>
