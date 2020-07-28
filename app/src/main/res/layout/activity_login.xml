@@ -134,7 +134,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12sp"
-                android:layout_below="@id/layer2">
+                android:layout_below="@id/layer2"
+                android:visibility="gone">
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/login_with"
                     android:layout_width="wrap_content"

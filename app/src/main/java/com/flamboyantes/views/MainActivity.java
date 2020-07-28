@@ -38,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseActivity {
 
-    NavigationView navigationView;
+//    NavigationView navigationView;
     BottomNavigationView navigation;
     CircleImageView header_profile;
 
@@ -132,10 +132,10 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
-        if (fm.getBackStackEntryCount() > 1) {
+        if (fm.getBackStackEntryCount() >1) {
             fm.popBackStack();
         } else if (fm.getBackStackEntryCount() == 1) {
-            dialogUtil.showDialogYesNo(getResources().getString(R.string.closeapp_msg), (dialog, id) -> {
+            dialogUtil.showDialogYesNo(getResources().getString(R.string.closeapp_msg)+" "+getResources().getString(R.string.app_name), (dialog, id) -> {
 
                         Intent intent = new Intent(Intent.ACTION_MAIN);
                         intent.addCategory(Intent.CATEGORY_HOME);

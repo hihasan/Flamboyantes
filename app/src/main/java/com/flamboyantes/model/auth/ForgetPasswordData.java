@@ -3,19 +3,7 @@ package com.flamboyantes.model.auth;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginModel {
-
-//    @SerializedName("login")
-//    @Expose
-//    private Login login;
-//
-//    public Login getLogin() {
-//        return login;
-//    }
-//
-//    public void setLogin(Login login) {
-//        this.login = login;
-//    }
+public class ForgetPasswordData {
 
     @SerializedName("Message")
     @Expose

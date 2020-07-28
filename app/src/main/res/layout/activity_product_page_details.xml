@@ -137,6 +137,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/layer2"
             android:layout_marginTop="8sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:layout_below="@id/music_recycler"/>
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/no_data_found"
             android:layout_width="256sp"

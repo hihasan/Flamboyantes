@@ -11,14 +11,11 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.flamboyantes.R;
 import com.flamboyantes.api.AuthApi;
-import com.flamboyantes.model.auth.Login;
 import com.flamboyantes.model.auth.LoginData;
-import com.flamboyantes.model.auth.LoginModel;
 import com.flamboyantes.model.auth.LoginTest;
 import com.flamboyantes.model.auth.UserLogin;
 import com.flamboyantes.util.APIClient;
 import com.flamboyantes.util.BaseActivity;
-import com.flamboyantes.util.Constants;
 import com.flamboyantes.util.RetrofitService;
 import com.flamboyantes.util.Singleton;
 import com.flamboyantes.views.MainActivity;
@@ -120,7 +117,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
 
                     else {
-                        Toast.makeText(getApplicationContext(), "Wrong User Id or Password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Wrong User id & Password", Toast.LENGTH_SHORT).show();
                     }
 
 

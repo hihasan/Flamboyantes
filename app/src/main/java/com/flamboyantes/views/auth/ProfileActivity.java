@@ -52,7 +52,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 break;
 
             case R.id.edit_profile_btn:
-                i = new Intent(getApplicationContext(), EditProfileActivity.class);
+                 i = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(i);
                 break;
         }
