@@ -152,7 +152,8 @@
                     android:layout_marginRight="20sp"
                     app:cardElevation="15sp"
                     app:cardCornerRadius="20sp"
-                    app:cardBackgroundColor="@color/colorPrimaryDark">
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    android:visibility="gone">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -164,7 +165,8 @@
                             android:id="@+id/one"
                             android:layout_width="match_parent"
                             android:layout_margin="4sp"
-                            android:layout_height="?attr/actionBarSize">
+                            android:layout_height="?attr/actionBarSize"
+                            android:visibility="gone">
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -235,7 +237,8 @@
                             android:layout_below="@id/relative_two"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="4sp">
+                            android:layout_margin="4sp"
+                            android:visibility="gone">
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/phone_iv"
                                 android:layout_width="24sp"
