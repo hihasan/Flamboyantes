@@ -1,6 +1,8 @@
 package com.flamboyantes.views.auth;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -14,11 +16,13 @@ import com.flamboyantes.api.AuthApi;
 import com.flamboyantes.model.auth.LoginData;
 import com.flamboyantes.model.auth.LoginTest;
 import com.flamboyantes.model.auth.UserLogin;
+import com.flamboyantes.model.customers.Customer;
 import com.flamboyantes.model.customers.Customers;
 import com.flamboyantes.util.APIClient;
 import com.flamboyantes.util.BaseActivity;
 import com.flamboyantes.util.RetrofitService;
 import com.flamboyantes.util.Singleton;
+import com.flamboyantes.util.SqliteDatabaseHelper;
 import com.flamboyantes.views.MainActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -26,11 +30,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.flamboyantes.util.Constants.EMAIL;
+import static com.flamboyantes.util.Constants.MyPreferences;
+import static com.flamboyantes.util.Constants.PASSWORD;
+
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     RelativeLayout login_btn, register_btn;
     AppCompatTextView forget_password_tv;
     TextInputEditText email_tf, password_tf;
+
+    private SharedPreferences sharedPreferences;
 
     private AuthApi authApi;
 
@@ -40,6 +50,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         Singleton.getInstance().setContext(this);
         authApi = RetrofitService.createService(AuthApi.class, APIClient.BASE_URL, true);
+
+        sharedPreferences=getSharedPreferences(MyPreferences, Context.MODE_PRIVATE);
 
         initViews();
         initListeners();
@@ -103,15 +115,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                         if (response.code() == 200) {
 
-//                            if (response.body().getStatus() == false){
-//                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-//                            }else {
-//                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-//                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-//                                startActivity(i);
-//                            }
+                            if (response.body().getStatus() == false){
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                SqliteDatabaseHelper db = new SqliteDatabaseHelper(getApplicationContext());
+                                db.customer(String.valueOf(response.body().getData().getCustomer().getId()), response.body().getData().getCustomer().getFirstName(),
+                                        response.body().getData().getCustomer().getLastName(), response.body().getData().getCustomer().getEmail());
+
+                                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+                                editor.putString(EMAIL,userEmail);
+                                editor.putString(PASSWORD,passwordValue);
 
 
+                                editor.commit();
+
+
+                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                startActivity(i);
+                            }
 
                         }
 

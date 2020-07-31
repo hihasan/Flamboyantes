@@ -3,6 +3,7 @@ package com.flamboyantes.api;
 import com.flamboyantes.model.auth.ForgetPassword;
 import com.flamboyantes.model.auth.ForgetPasswordData;
 import com.flamboyantes.model.auth.LoginTest;
+import com.flamboyantes.model.customers.Customer;
 import com.flamboyantes.model.customers.Customers;
 import com.flamboyantes.util.APIClient;
 

@@ -42,6 +42,9 @@ public class Customer {
     @SerializedName("gender")
     @Expose
     private Object gender;
+    @SerializedName("phone_number")
+    @Expose
+    private Object phoneNumber;
     @SerializedName("admin_comment")
     @Expose
     private Object adminComment;
@@ -182,6 +185,14 @@ public class Customer {
 
     public void setGender(Object gender) {
         this.gender = gender;
+    }
+
+    public Object getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Object phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Object getAdminComment() {

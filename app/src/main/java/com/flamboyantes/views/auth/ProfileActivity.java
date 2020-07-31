@@ -1,6 +1,9 @@
 package com.flamboyantes.views.auth;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,12 +14,20 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.app.TaskStackBuilder;
 
 import com.flamboyantes.R;
+import com.flamboyantes.model.customers.Customer;
 import com.flamboyantes.util.BaseActivity;
+import com.flamboyantes.util.SqliteDatabaseHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends BaseActivity implements View.OnClickListener {
 
-    AppCompatTextView logout;
+    AppCompatTextView logout, name, email;
     AppCompatImageView edit_profile_btn;
+    private List<Customer> customer = new ArrayList<>();
+    private SQLiteDatabase database;
+    private int i =0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,11 +46,15 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
     public void initViews(){
         logout = findViewById (R.id.logout);
+        name = findViewById (R.id.name);
+        email = findViewById (R.id.email);
         edit_profile_btn = findViewById (R.id.edit_profile_btn);
     }
 
     public void initListeners(){
         logout.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -57,4 +72,36 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 break;
         }
     }
+
+//    private void getUserDetails() {
+//
+//        class SaleType extends AsyncTask<Void, Void, List<Customer>> {
+//
+//
+//            @Override
+//            protected void onPreExecute() {
+//                super.onPreExecute();
+//
+//            }
+//
+//            @Override
+//            protected List<Customer> doInBackground(Void... voids) {
+//                return db.getCustomerData();
+//            }
+//
+//            @Override
+//            protected void onPostExecute(List<Customer> tasks) {
+//                super.onPostExecute(tasks);
+//                customer.clear();
+//                customer.add((Customer) tasks);
+//                for (int i =0; i<customer.size(); i++){
+//                   name.setText(customer.get(i).getFirstName()+" "+customer.get(i).getLastName());
+//                   email.setText(customer.get(i).getEmail());
+//                }
+//
+//
+//            }
+//        }
+//
+//    }
 }

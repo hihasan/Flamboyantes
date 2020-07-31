@@ -1,21 +1,43 @@
 package com.flamboyantes.model.customers;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Customers {
 
-    @SerializedName("customers")
+    @SerializedName("Message")
     @Expose
-    private List<Customer> customers = null;
+    private String message;
+    @SerializedName("Status")
+    @Expose
+    private Boolean status;
+    @SerializedName("Data")
+    @Expose
+    private Data data;
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public String getMessage() {
+        return message;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
     }
 
 }
+

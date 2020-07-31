@@ -11,4 +11,9 @@ public class Constants {
     public static final String HomeFragment = "homefragment";
     public static boolean love=false;
     public static boolean player=false;
+
+    //sharedpreference value
+    public static final String MyPreferences="flmaboyantes";
+    public static final String EMAIL="email";
+    public static final String PASSWORD = "password";
 }

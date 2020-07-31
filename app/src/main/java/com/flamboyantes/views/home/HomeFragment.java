@@ -100,8 +100,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     public void initViews(){
-        Utils.setModelOne();
-        Utils.setModelTwo();
+
         mPager =  view.findViewById(R.id.pager);
         indicator = view.findViewById(R.id.indicator);
 
