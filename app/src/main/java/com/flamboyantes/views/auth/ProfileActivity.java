@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.app.TaskStackBuilder;
 
 import com.flamboyantes.R;
+import com.flamboyantes.model.ProfileModel;
 import com.flamboyantes.model.customers.Customer;
 import com.flamboyantes.util.BaseActivity;
 import com.flamboyantes.util.SqliteDatabaseHelper;
@@ -26,7 +27,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     AppCompatTextView logout, name, email;
     AppCompatImageView edit_profile_btn;
     private List<Customer> customer = new ArrayList<>();
-    private SQLiteDatabase database;
+    private SqliteDatabaseHelper db;
+    private ArrayList<ProfileModel> profileModel;
     private int i =0;
 
     @Override
@@ -45,6 +47,10 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     }
 
     public void initViews(){
+
+        db = new SqliteDatabaseHelper(getApplicationContext());
+        profileModel = new ArrayList<>(db.getProfile());
+
         logout = findViewById (R.id.logout);
         name = findViewById (R.id.name);
         email = findViewById (R.id.email);
@@ -53,6 +59,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
     public void initListeners(){
         logout.setOnClickListener(this);
+        int i =0;
+        String fname = profileModel.get(i).getFname();
+        String lname = profileModel.get(i).getLname();
+
+        name.setText(fname+" "+lname);
+        email.setText(profileModel.get(i).getEmail());
 
 
     }

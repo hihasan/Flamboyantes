@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favorite_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12sp" />
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80sp"
+                android:layout_below="@id/favorite_recycler"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/layer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="128sp"
+            android:layout_height="128sp"
+            android:layout_marginTop="24sp"
+            android:id="@+id/favorite_icon"
+            android:layout_centerInParent="true"
+            android:src="@drawable/favorite"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/favorite_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/favorite_icon"
+            android:gravity="center"
+            android:text="No Albums added. Please Add item"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
 
 </RelativeLayout>

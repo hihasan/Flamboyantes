@@ -118,6 +118,7 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        SqliteDatabaseHelper db = new SqliteDatabaseHelper(getActivity());
         switch (view.getId()){
             case R.id.back:
                 replaceFragment(new HomeFragment(), Constants.HomeScreen, Constants.HomeFragment, R.id.fragment_container);
@@ -125,21 +126,13 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
 
             case R.id.add_to_cart:
                 Toast.makeText(getActivity(), "Add To Cart", Toast.LENGTH_SHORT).show();
+                db.cart_item(String.valueOf(Singleton.getInstance().getId()), Singleton.getInstance().getName(), Singleton.getInstance().getImage(),
+                        String.valueOf(Singleton.getInstance().getPrice()));
                 break;
 
             case R.id.favorite_iv:
-                if (Constants.love ==true){
-                    favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
-                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
-                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
-                    Toast.makeText(getActivity(), "Added To Favorite", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    favorite_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
-//                    SqliteDatabaseHelper db = new SqliteDatabaseHelper(getContext());
-//                    db.favorite_insert(Singleton.getInstance().getId(), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
-                }
-                Constants.love = !Constants.love;
+                db.favorite_insert(String.valueOf(Singleton.getInstance().getId()), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
+                Toast.makeText(getActivity(), "Added To Favorite", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_relative_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4sp"
+    android:layout_marginBottom="4sp"
+    android:paddingRight="4sp"
+    android:paddingLeft="4sp">
+
+    <RelativeLayout
+        android:id="@+id/layer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/album_img"
+            android:layout_width="56sp"
+            android:layout_height="56sp"
+            android:src="@drawable/app_logo"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/close"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/close_circle"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/album_img"
+            android:layout_marginLeft="8sp"
+            android:layout_marginRight="4sp"
+            android:layout_centerVertical="true">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/album_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Album Name Will be here"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/album_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/album_name"
+                android:text="$ 5"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

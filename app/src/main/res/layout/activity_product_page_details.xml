@@ -36,7 +36,7 @@
                 android:layout_marginEnd="12sp"
                 android:layout_marginBottom="12sp"
                 android:padding="4sp"
-                android:src="@drawable/ic_favorite_border_black_24dp" />
+                android:src="@drawable/ic_favorite_black_24dp" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/layer2"
