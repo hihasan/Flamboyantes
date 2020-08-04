@@ -1,12 +1,16 @@
 package com.flamboyantes.model;
 
 public class ProfileModel {
-    String fname, lname, email;
+    String fname, lname, email, id;
 
     public ProfileModel(String fname, String lname, String email) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+    }
+
+    public ProfileModel (String id){
+        this.id = id;
     }
 
     public String getFname() {
@@ -31,5 +35,13 @@ public class ProfileModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

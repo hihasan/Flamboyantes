@@ -157,8 +157,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             });
 
 
-        } else {
-
+        }
+        else {
             Toast.makeText(this, getResources().getString(R.string.no_internet), Toast.LENGTH_LONG).show();
         }
 

@@ -161,6 +161,38 @@ public class SqliteDatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    //get the all Profile
+    public List<ProfileModel> getProfileId() {
+        // Data model list in which we have to return the data
+        List<ProfileModel> data = new ArrayList<ProfileModel>();
+        // Accessing database for reading data
+        SQLiteDatabase db = getWritableDatabase();
+        // Select query for selecting whole table data
+        String select_query = "Select * from " + CUSTOMERS;
+        // Cursor for traversing whole data into database
+        Cursor cursor = db.rawQuery(select_query, null);
+        try {
+            // check if cursor move to first
+            if (cursor.moveToFirst()) {
+                // looping through all data and adding to arraylist
+                do {
+                    ProfileModel data_model = new ProfileModel(cursor.getString(1));
+                    data.add(data_model);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            // After using cursor we have to close it
+            cursor.close();
+
+        }
+
+        // Closing database
+        db.close();
+
+        // returning list
+        return data;
+    }
+
     //get the all cart item
     public List<CartModel> getCartItem() {
         // Data model list in which we have to return the data

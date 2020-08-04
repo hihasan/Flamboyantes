@@ -1,6 +1,8 @@
 package com.flamboyantes.views.home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +26,13 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flamboyantes.R;
 import com.flamboyantes.adapter.MusicAdapter;
 import com.flamboyantes.api.ProductsApi;
+import com.flamboyantes.model.ProfileModel;
+import com.flamboyantes.model.auth.LoginTest;
+import com.flamboyantes.model.auth.UserLogin;
+import com.flamboyantes.model.cartfavorite.CartFavoriteData;
+import com.flamboyantes.model.cartfavorite.CartFavoriteModel;
+import com.flamboyantes.model.cartfavorite.ShoppingCartItem;
+import com.flamboyantes.model.customers.Customers;
 import com.flamboyantes.model.products.AllMusicModel;
 import com.flamboyantes.model.products.AllNewProductArray;
 import com.flamboyantes.model.products.Downloaditem;
@@ -33,6 +42,8 @@ import com.flamboyantes.util.Constants;
 import com.flamboyantes.util.RetrofitService;
 import com.flamboyantes.util.Singleton;
 import com.flamboyantes.util.SqliteDatabaseHelper;
+import com.flamboyantes.views.MainActivity;
+import com.flamboyantes.views.auth.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +51,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.flamboyantes.util.Constants.EMAIL;
+import static com.flamboyantes.util.Constants.PASSWORD;
 
 public class ProductPageDetails extends BaseFragment implements View.OnClickListener {
     private View view;
@@ -51,6 +65,10 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
 
     private ProductsApi products;
 
+    private SqliteDatabaseHelper db;
+    private ArrayList<ProfileModel> profileModel;
+    private int i =0;
+
     private MusicAdapter musicAdapter;
     private LinearLayoutManager linearLayoutManager;
     private ShimmerFrameLayout mShimmerViewContainer;
@@ -60,6 +78,8 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_product_page_details, container, false);
         Singleton.getInstance().setContext(getActivity());
+
+        products = RetrofitService.createService(ProductsApi.class, APIClient.BASE_URL, true);
 
         initViews();
         initListeners();
@@ -81,6 +101,9 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
     }
 
     public void initViews(){
+        db = new SqliteDatabaseHelper(getContext());
+        profileModel = new ArrayList<>(db.getProfileId());
+
         album_name_tv = view.findViewById (R.id.album_name_tv);
         update_tv = view.findViewById (R.id.update_tv);
         price_tv = view.findViewById (R.id.price_tv);
@@ -125,20 +148,20 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
                 break;
 
             case R.id.add_to_cart:
-                Toast.makeText(getActivity(), "Add To Cart", Toast.LENGTH_SHORT).show();
-                db.cart_item(String.valueOf(Singleton.getInstance().getId()), Singleton.getInstance().getName(), Singleton.getInstance().getImage(),
-                        String.valueOf(Singleton.getInstance().getPrice()));
+//                Toast.makeText(getActivity(), "Add To Cart", Toast.LENGTH_SHORT).show();
+//                db.cart_item(String.valueOf(Singleton.getInstance().getId()), Singleton.getInstance().getName(), Singleton.getInstance().getImage(),
+//                        String.valueOf(Singleton.getInstance().getPrice()));
+                callCartPostAPi();
                 break;
 
             case R.id.favorite_iv:
-                db.favorite_insert(String.valueOf(Singleton.getInstance().getId()), Singleton.getInstance().getName(), Singleton.getInstance().getImage(), Singleton.getInstance().getUpdate_on_utc());
-                Toast.makeText(getActivity(), "Added To Favorite", Toast.LENGTH_SHORT).show();
+                callFavoritePostAPi();
                 break;
         }
     }
 
     private void callNewProduct() {
-        products = RetrofitService.createService(ProductsApi.class, APIClient.BASE_URL, true);
+
 
 
         if (isNetworkAvailable()) {
@@ -191,5 +214,93 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
         // Stopping Shimmer Effect's animation after data is loaded to ListView
         mShimmerViewContainer.stopShimmerAnimation();
         mShimmerViewContainer.setVisibility(View.GONE);
+    }
+
+    public void callFavoritePostAPi(){
+        if (isNetworkAvailable()) {
+
+
+            dialogUtil.showProgressDialog();
+
+            ShoppingCartItem shoppingCartItem = new ShoppingCartItem("1", String.valueOf(Singleton.getInstance().getId()), profileModel.get(i).getId(), 2);
+            CartFavoriteModel cartFavoriteModel = new CartFavoriteModel(shoppingCartItem);
+
+
+            Call<CartFavoriteData> callLogin = products.cartFavoriteData(cartFavoriteModel);
+            callLogin.enqueue(new Callback<CartFavoriteData>() {
+                @Override
+                public void onResponse(Call<CartFavoriteData> call, Response<CartFavoriteData> response) {
+                    dialogUtil.dismissProgress();
+                    if (response.isSuccessful()) {
+
+                        if (response.code() == 200) {
+                            Toast.makeText(getContext(), "Added To Favorite", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    else {
+                        Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<CartFavoriteData> call, Throwable t) {
+                    dialogUtil.dismissProgress();
+                    Toast.makeText(getContext(), getResources().getString(R.string.tryagain), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        }
+        else {
+            Toast.makeText(getContext(), getResources().getString(R.string.no_internet), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void callCartPostAPi(){
+        if (isNetworkAvailable()) {
+
+
+            dialogUtil.showProgressDialog();
+
+            ShoppingCartItem shoppingCartItem = new ShoppingCartItem("1", String.valueOf(Singleton.getInstance().getId()), profileModel.get(i).getId(), 1);
+            CartFavoriteModel cartFavoriteModel = new CartFavoriteModel(shoppingCartItem);
+
+
+            Call<CartFavoriteData> callLogin = products.cartFavoriteData(cartFavoriteModel);
+            callLogin.enqueue(new Callback<CartFavoriteData>() {
+                @Override
+                public void onResponse(Call<CartFavoriteData> call, Response<CartFavoriteData> response) {
+                    dialogUtil.dismissProgress();
+                    if (response.isSuccessful()) {
+
+                        if (response.code() == 200) {
+                            Toast.makeText(getContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    else {
+                        Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<CartFavoriteData> call, Throwable t) {
+                    dialogUtil.dismissProgress();
+                    Toast.makeText(getContext(), getResources().getString(R.string.tryagain), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        }
+        else {
+            Toast.makeText(getContext(), getResources().getString(R.string.no_internet), Toast.LENGTH_LONG).show();
+        }
     }
 }

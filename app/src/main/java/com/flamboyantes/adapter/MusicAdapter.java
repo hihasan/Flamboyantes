@@ -47,19 +47,20 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
 //            mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
             try{
                 mp.setDataSource(downloaditem.get(position).getSampleDownloadurl());//Write your location here
-                mp.prepareAsync();
+//                mp.prepareAsync();
 //                mp.prepare();
                 if (Constants.player ==true){
 
-//                    mp.prepare();
+                    mp.prepare();
                     mp.start();
                     holder.album_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_play_circle_filled_black_24dp));
                 }
                 else {
 
-//                    mp.prepare();
-                    mp.stop();
+                    mp.prepare();
+
                     holder.album_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pause_circle_filled_black_24dp));
+                    mp.stop();
                 }
 
 
