@@ -153,110 +153,22 @@
                     app:cardElevation="15sp"
                     app:cardCornerRadius="20sp"
                     app:cardBackgroundColor="@color/colorPrimaryDark"
-                    android:visibility="gone">
+                    >
                     <RelativeLayout
+                        android:id="@+id/change_password_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="?attr/actionBarSize"
                         android:layout_marginLeft="20sp"
                         android:layout_marginRight="20sp"
                         android:padding="8sp"
                         android:background="@drawable/circularbordersolid">
-                        <RelativeLayout
-                            android:id="@+id/one"
-                            android:layout_width="match_parent"
-                            android:layout_margin="4sp"
-                            android:layout_height="?attr/actionBarSize"
-                            android:visibility="gone">
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Profile Details"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/white"
-                                android:textSize="16sp"
-                                android:textStyle="bold"/>
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/edit_profile_btn"
-                                android:layout_width="24sp"
-                                android:layout_height="24sp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_create_black_24dp"/>
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/relative_one"
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/one"
-                            android:layout_margin="4sp">
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/name_iv"
-                                android:layout_width="24sp"
-                                android:layout_height="24sp"
-                                android:src="@drawable/ic_person_black_24dp"
-                                app:tint="@color/white"/>
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/name_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/name_iv"
-                                android:text="Arijit Singh"
-                                android:textSize="16sp"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="4sp"
-                                android:layout_marginRight="4sp"/>
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/relative_two"
-                            android:layout_below="@id/relative_one"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="4sp">
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/email_iv"
-                                android:layout_width="24sp"
-                                android:layout_height="24sp"
-                                android:src="@drawable/ic_email_black_24dp"/>
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/email_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/email_iv"
-                                android:text="arijitsingh@gmail.com"
-                                android:textSize="16sp"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="4sp"
-                                android:layout_marginRight="4sp"/>
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/relative_three"
-                            android:layout_below="@id/relative_two"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="4sp"
-                            android:visibility="gone">
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/phone_iv"
-                                android:layout_width="24sp"
-                                android:layout_height="24sp"
-                                android:src="@drawable/ic_phone_black_24dp"/>
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/phone_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/phone_iv"
-                                android:text="+918017716273"
-                                android:textSize="16sp"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="4sp"
-                                android:layout_marginRight="4sp"/>
-                        </RelativeLayout>
+                            android:layout_centerInParent="true"
+                            android:text="Change Password"
+                            android:textSize="24sp"
+                            android:textColor="@color/white"/>
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
