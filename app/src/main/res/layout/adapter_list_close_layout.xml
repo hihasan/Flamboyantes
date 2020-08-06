@@ -19,13 +19,6 @@
             android:layout_height="56sp"
             android:src="@drawable/app_logo"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/close"
-            android:layout_width="16sp"
-            android:layout_height="16sp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/close_circle"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

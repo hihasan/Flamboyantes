@@ -16,16 +16,19 @@ import com.bumptech.glide.Glide;
 import com.flamboyantes.R;
 import com.flamboyantes.model.CartModel;
 import com.flamboyantes.model.FavoriteModel;
+import com.flamboyantes.model.cartfavoriteresponse.ShopingCartModel;
+import com.flamboyantes.model.cartfavoriteresponse.ShoppingCart;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<FavoriteModel> favoriteModel;
+    private List<ShoppingCart> favoriteModel;
 
-    public FavoriteAdapter(ArrayList<FavoriteModel> favoriteModel, Context context){
+    public FavoriteAdapter(List<ShoppingCart> favoriteModel, Context context){
         this.favoriteModel = favoriteModel;
         this.context = context;
 
@@ -43,15 +46,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context)
-                .load(favoriteModel.get(position).getImg())
-                .into(holder.album_img);
-        holder.album_name.setText(favoriteModel.get(position).getName());
-        holder.album_price.setText("$"+" "+favoriteModel.get(position).getPrice());
+        for (int i =0 ;i<favoriteModel.get(position).getProduct().getImages().size(); i++){
+            Glide.with(context)
+                    .load(favoriteModel.get(position).getProduct().getImages().get(i).getSrc())
+                    .into(holder.album_img);
+        }
 
-        holder.close.setOnClickListener(view -> {
-            Toast.makeText(context, "Method Need to Add", Toast.LENGTH_SHORT).show();
-        });
+        holder.album_name.setText(favoriteModel.get(position).getProduct().getName());
+        holder.album_price.setText("$"+" "+ favoriteModel.get(position).getProduct().getPrice());
+
     }
 
     @Override
@@ -63,14 +66,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         CircleImageView album_img;
         AppCompatTextView album_name, album_price;
         RelativeLayout list_relative_id;
-        AppCompatImageView close;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             album_img = itemView.findViewById (R.id.album_img);
             album_name = itemView.findViewById (R.id.album_name);
             album_price = itemView.findViewById (R.id.album_price);
-            close = itemView.findViewById(R.id.close);
             list_relative_id = itemView.findViewById (R.id.list_relative_id);
         }
     }

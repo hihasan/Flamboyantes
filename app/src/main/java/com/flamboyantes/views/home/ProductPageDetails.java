@@ -162,8 +162,6 @@ public class ProductPageDetails extends BaseFragment implements View.OnClickList
 
     private void callNewProduct() {
 
-
-
         if (isNetworkAvailable()) {
 //            dialogUtil.showProgressDialog();
             Call<AllMusicModel> callAdvisoryApi = products.getAllMusicModel("Bearer "+ Constants.AUTHKEY, Singleton.getInstance().getId());

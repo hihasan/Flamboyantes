@@ -51,9 +51,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.album_name.setText(cartmodel.get(position).getName());
         holder.album_price.setText("$"+" "+cartmodel.get(position).getPrice());
 
-        holder.close.setOnClickListener(view -> {
-            Toast.makeText(context, "Method Need to Add", Toast.LENGTH_SHORT).show();
-        });
 
     }
 
@@ -66,14 +63,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         CircleImageView album_img;
         AppCompatTextView album_name, album_price;
         RelativeLayout list_relative_id;
-        AppCompatImageView close;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             album_img = itemView.findViewById (R.id.album_img);
             album_name = itemView.findViewById (R.id.album_name);
             album_price = itemView.findViewById (R.id.album_price);
-            close = itemView.findViewById(R.id.close);
             list_relative_id = itemView.findViewById (R.id.list_relative_id);
         }
     }
