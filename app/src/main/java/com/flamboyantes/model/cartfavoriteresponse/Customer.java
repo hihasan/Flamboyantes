@@ -20,7 +20,7 @@ public class Customer {
     private String customerGuid;
     @SerializedName("username")
     @Expose
-    private Object username;
+    private String username;
     @SerializedName("email")
     @Expose
     private String email;
@@ -65,7 +65,7 @@ public class Customer {
     private Object systemName;
     @SerializedName("last_ip_address")
     @Expose
-    private Object lastIpAddress;
+    private String lastIpAddress;
     @SerializedName("created_on_utc")
     @Expose
     private String createdOnUtc;
@@ -120,11 +120,11 @@ public class Customer {
         this.customerGuid = customerGuid;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Object username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -240,11 +240,11 @@ public class Customer {
         this.systemName = systemName;
     }
 
-    public Object getLastIpAddress() {
+    public String getLastIpAddress() {
         return lastIpAddress;
     }
 
-    public void setLastIpAddress(Object lastIpAddress) {
+    public void setLastIpAddress(String lastIpAddress) {
         this.lastIpAddress = lastIpAddress;
     }
 

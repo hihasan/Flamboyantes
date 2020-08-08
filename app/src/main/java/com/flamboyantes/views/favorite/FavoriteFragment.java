@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.flamboyantes.R;
 import com.flamboyantes.adapter.FavoriteAdapter;
 import com.flamboyantes.api.FavoriteApi;
@@ -42,6 +43,7 @@ import retrofit2.Response;
 
 public class FavoriteFragment extends BaseFragment {
     private View view;
+    private ShimmerFrameLayout mShimmerViewContainer;
     private RecyclerView favorite_recycler;
     private FavoriteAdapter favoriteAdapter;
     private ArrayList<FavoriteModel> favoriteModel;
@@ -52,7 +54,6 @@ public class FavoriteFragment extends BaseFragment {
 
     private FavoriteApi favoriteApi;
     private ArrayList<ProfileModel> profileModelId;
-    private ArrayList<ShoppingCart> wish = new ArrayList<>();
 
     @Nullable
     @Override
@@ -67,15 +68,16 @@ public class FavoriteFragment extends BaseFragment {
         return view;
     }
 
+
     public void initViews() {
         favorite_recycler = view.findViewById(R.id.favorite_recycler);
-
+        mShimmerViewContainer = view.findViewById (R.id.shimmer_view_container);
         layer1 = view.findViewById(R.id.layer1);
         db = new SqliteDatabaseHelper(getActivity());
     }
 
     public void initListeners() {
-        favoriteModel = new ArrayList<>(db.getFavorite());
+
         profileModelId = new ArrayList<>(db.getProfileId());
 
         callFavorite();
@@ -141,15 +143,8 @@ public class FavoriteFragment extends BaseFragment {
             layer1.setVisibility(View.VISIBLE);
         } else {
             layer1.setVisibility(View.INVISIBLE);
-            for (int k =0 ; k<shoppingCarts.size(); k++){
-                if (shoppingCarts.get(k).getShoppingCartType().trim().equalsIgnoreCase("wishlist")){
-                    wish.addAll(shoppingCarts);
-                }
 
-
-            }
-
-            favoriteAdapter = new FavoriteAdapter(wish, getContext());
+            favoriteAdapter = new FavoriteAdapter(shoppingCarts, getContext());
             linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
             favorite_recycler.setLayoutManager(linearLayoutManager);
             favorite_recycler.setAdapter(favoriteAdapter);
@@ -159,6 +154,10 @@ public class FavoriteFragment extends BaseFragment {
 
 
         }
+
+        // Stopping Shimmer Effect's animation after data is loaded to ListView
+        mShimmerViewContainer.stopShimmerAnimation();
+        mShimmerViewContainer.setVisibility(View.GONE);
     }
 }
 

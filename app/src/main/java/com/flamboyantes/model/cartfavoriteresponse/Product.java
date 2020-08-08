@@ -19,7 +19,7 @@ public class Product {
     private List<LocalizedName> localizedNames = null;
     @SerializedName("short_description")
     @Expose
-    private Object shortDescription;
+    private String shortDescription;
     @SerializedName("full_description")
     @Expose
     private Object fullDescription;
@@ -321,11 +321,11 @@ public class Product {
         this.localizedNames = localizedNames;
     }
 
-    public Object getShortDescription() {
+    public String getShortDescription() {
         return shortDescription;
     }
 
-    public void setShortDescription(Object shortDescription) {
+    public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
 
