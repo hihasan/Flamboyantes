@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.flamboyantes.R;
 import com.flamboyantes.model.CartModel;
 import com.flamboyantes.model.cartfavoriteresponse.ShoppingCart;
+import com.flamboyantes.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,14 +46,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        double total =0;
         for (int i =0 ;i<cartmodel.get(position).getProduct().getImages().size(); i++){
             Glide.with(context)
                     .load(cartmodel.get(position).getProduct().getImages().get(i).getSrc())
                     .into(holder.album_img);
+
         }
 
         holder.album_name.setText(cartmodel.get(position).getProduct().getName());
         holder.album_price.setText("$"+" "+ cartmodel.get(position).getProduct().getPrice());
+
+
+
+
 
 
     }

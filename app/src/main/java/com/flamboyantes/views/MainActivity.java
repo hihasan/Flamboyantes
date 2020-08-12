@@ -8,6 +8,7 @@ import com.flamboyantes.util.BaseActivity;
 import com.flamboyantes.util.BottomNavigationBehavior;
 import com.flamboyantes.views.auth.ProfileActivity;
 import com.flamboyantes.views.cart.CartFragment;
+import com.flamboyantes.views.cart.CartMain;
 import com.flamboyantes.views.favorite.FavoriteFragment;
 import com.flamboyantes.views.favorite.FavoriteMain;
 import com.flamboyantes.views.home.HomeFragment;
@@ -106,7 +107,7 @@ public class MainActivity extends BaseActivity {
                     return true;
 
                 case R.id.navigation_cart:
-                    fragment = new CartFragment();
+                    fragment = new CartMain();
                     loadFragment(fragment);
                     return true;
 

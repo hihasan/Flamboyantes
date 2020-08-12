@@ -9,7 +9,7 @@ public class Singleton {
     private Fragment whichFragmentItIs;
 
     private int id;
-    private String image, name, update_on_utc, short_description;
+    private String image, name, update_on_utc, short_description, total_price;
     private double price;
 
     private Singleton() {
@@ -94,5 +94,13 @@ public class Singleton {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(String total_price) {
+        this.total_price = total_price;
     }
 }
